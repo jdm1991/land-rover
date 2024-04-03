@@ -248,7 +248,7 @@ export default function index() {
             </p>
             <Link href="/Service">
               <button className="bg-[#004225] rounded-lg text-white border-none py-2 px-4 font-['Outfit'] text-base cursor-pointer transition duration-300 ease-in-out hover:bg-gray-600 w-32">
-                Explore
+                Explore.
               </button>
             </Link>
           </div>
