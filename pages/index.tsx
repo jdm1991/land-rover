@@ -223,7 +223,7 @@ export default function index() {
             </div>
           </div>
         </section>
-        <section className="relative text-left border-t-8  border-b-8 border-black">
+        <section className="relative text-left border-t-8 border-b-8 border-black">
           <Image
             src="https://media.jlrms.com/styles/low_res/s3/2021-02-09/image/ccee40d2-97ae-4ee4-bc98-cfdfac7addf9/L_Classic_Trophy_100221_21_1.jpeg?VersionId=oHlUExiOlEfpi.SYuDGkPiqv3UY7TYRj&itok=Y-ZGl86R"
             alt="Defender-services"
@@ -231,7 +231,7 @@ export default function index() {
             height={1080}
             className="w-full h-auto"
           />
-          <div className="absolute bottom-0 left-0 bg-white bg-opacity-70 p-5 max-w-[80%] rounded-lg mb-14 ml-12 border-l border-black border-b">
+          <div className="absolute bottom-0 left-0 bg-white bg-opacity-70 p-5 max-w-[80%] rounded-lg mb-14 ml-12 border-l border-b border-black">
             <h1 className="text-5xl font-medium mb-4">Service & Maintenance</h1>
             <p className="text-lg font-semibold mb-8">
               At our dealership, we understand the importance of keeping your
