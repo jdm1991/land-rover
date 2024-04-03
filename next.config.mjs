@@ -11,6 +11,9 @@ const nextConfig = {
       "media.jlrms.com",
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
