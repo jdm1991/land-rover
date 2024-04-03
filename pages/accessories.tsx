@@ -11,7 +11,7 @@ type AccessoriesProps = {
   accessories: AccessoriesType[];
 };
 
-export default function AccessoriesPage({ accessories }: AccessoriesProps) {
+export default function Accessories({ accessories }: AccessoriesProps) {
   const [selectedAccessory, setSelectedAccessory] =
     useState<AccessoriesType | null>(null);
   const [basket, setBasket] = useState<AccessoriesType[]>([]);
@@ -25,11 +25,11 @@ export default function AccessoriesPage({ accessories }: AccessoriesProps) {
     }).format(priceInPounds);
   };
 
-  const selectAccessory = (accessory: Accessories) => {
+  const selectAccessory = (accessory: AccessoriesType) => {
     setSelectedAccessory(accessory);
   };
 
-  const addToBasket = (accessory: Accessories) => {
+  const addToBasket = (accessory: AccessoriesType) => {
     const existingItem = basket.find((item) => item.id === accessory.id);
     if (existingItem) {
       setBasket(
