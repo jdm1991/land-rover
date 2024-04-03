@@ -175,7 +175,7 @@ export default function Contact() {
                   type="submit"
                   className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#004225] hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 >
-                  Submit
+                  Submit now
                 </button>
               </div>
             </form>
