@@ -1,20 +1,20 @@
 import Layout from "./layout";
 import React, { useState } from "react";
-import { PrismaClient, Accessories } from "@prisma/client";
+import { PrismaClient, Accessories as AccessoriesType } from "@prisma/client";
 import "../app/globals.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
 const prisma = new PrismaClient();
 
-export default function AccessoriesPage({
-  accessories,
-}: {
-  accessories: Accessories[];
-}) {
+type AccessoriesProps = {
+  accessories: AccessoriesType[];
+};
+
+export default function AccessoriesPage({ accessories }: AccessoriesProps) {
   const [selectedAccessory, setSelectedAccessory] =
-    useState<Accessories | null>(null);
-  const [basket, setBasket] = useState<Accessories[]>([]);
+    useState<AccessoriesType | null>(null);
+  const [basket, setBasket] = useState<AccessoriesType[]>([]);
   const router = useRouter();
 
   const formatCurrency = (value: number) => {
