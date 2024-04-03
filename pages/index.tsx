@@ -125,7 +125,7 @@ export default function index() {
           <div>
             <h2 className="text-5xl font-extralight mb-8">Our pledge to you</h2>
             <p>
-              &quot;At [Dealership Name], we are committed to delivering an
+              'At [Dealership Name], we are committed to delivering an
               unparalleled experience to enthusiasts of the iconic Land Rover
               Defender. Our mission is to curate and provide the highest
               quality, expertly restored and meticulously maintained selection
@@ -144,7 +144,7 @@ export default function index() {
               just about making a purchase; it&apos;s about embarking on a
               journey that respects the past, celebrates the present, and
               anticipates the future of adventure with every turn of the
-              key.&quot;
+              key.'
             </p>
           </div>
         </section>
