@@ -1,20 +1,20 @@
 import Layout from "./layout";
 import React, { useState } from "react";
-import { PrismaClient, Accessories as AccessoriesType } from "@prisma/client";
+import { PrismaClient, Accessories } from "@prisma/client";
 import "../app/globals.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
 const prisma = new PrismaClient();
 
-export default function Accessories({
+export default function AccessoriesPage({
   accessories,
 }: {
-  accessories: AccessoriesType[];
+  accessories: Accessories[];
 }) {
   const [selectedAccessory, setSelectedAccessory] =
-    useState<AccessoriesType | null>(null);
-  const [basket, setBasket] = useState<AccessoriesType[]>([]);
+    useState<Accessories | null>(null);
+  const [basket, setBasket] = useState<Accessories[]>([]);
   const router = useRouter();
 
   const formatCurrency = (value: number) => {
@@ -25,17 +25,17 @@ export default function Accessories({
     }).format(priceInPounds);
   };
 
-  const selectAccessory = (accessory: AccessoriesType) => {
+  const selectAccessory = (accessory: Accessories) => {
     setSelectedAccessory(accessory);
   };
 
-  const addToBasket = (accessory: AccessoriesType) => {
+  const addToBasket = (accessory: Accessories) => {
     const existingItem = basket.find((item) => item.id === accessory.id);
     if (existingItem) {
       setBasket(
         basket.map((item) =>
           item.id === accessory.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: (item.quantity || 0) + 1 }
             : item
         )
       );
@@ -52,7 +52,7 @@ export default function Accessories({
       setBasket(
         basket.map((item) =>
           item.id === accessoryId
-            ? { ...item, quantity: item.quantity - 1 }
+            ? { ...item, quantity: (item.quantity || 0) - 1 }
             : item
         )
       );
@@ -61,7 +61,7 @@ export default function Accessories({
 
   const getTotalPrice = () => {
     return basket.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) => total + item.price * (item.quantity || 0),
       0
     );
   };
@@ -176,7 +176,7 @@ export default function Accessories({
                       </button>
                     </div>
                     <div className="w-20 text-right">
-                      {formatCurrency(item.price * item.quantity)}
+                      {formatCurrency(item.price * (item.quantity || 0))}
                     </div>
                   </div>
                 ))}
