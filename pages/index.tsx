@@ -86,16 +86,20 @@ export default function index() {
       <Layout>
         <section className="relative bg-white h-[85vh] flex items-stretch overflow-hidden border-b-8 border-black">
           <div className="flex-1 flex justify-center overflow-hidden mb-20">
-            <img
+            <Image
               src="https://smgmedia.blob.core.windows.net/images/129785/1920/land-rover-defender-90-suv-diesel-567ef2bf2583.jpg"
               alt=""
+              width={1920}
+              height={1080}
               className="w-full h-[60%] object-cover"
             />
           </div>
           <div className="flex-1 flex justify-center overflow-hidden mb-20">
-            <img
+            <Image
               src="https://www.revogarage.com/wp-content/uploads/2020/07/DSC_4363-6.jpg"
               alt=""
+              width={1920}
+              height={1080}
               className="w-full h-[60%] object-cover"
             />
           </div>
@@ -121,7 +125,7 @@ export default function index() {
           <div>
             <h2 className="text-5xl font-extralight mb-8">Our pledge to you</h2>
             <p>
-              "At [Dealership Name], we are committed to delivering an
+              &quot;At [Dealership Name], we are committed to delivering an
               unparalleled experience to enthusiasts of the iconic Land Rover
               Defender. Our mission is to curate and provide the highest
               quality, expertly restored and meticulously maintained selection
@@ -139,14 +143,17 @@ export default function index() {
               the vehicles we represent. At [Dealership Name], it&apos;s not
               just about making a purchase; it&apos;s about embarking on a
               journey that respects the past, celebrates the present, and
-              anticipates the future of adventure with every turn of the key."
+              anticipates the future of adventure with every turn of the
+              key.&quot;
             </p>
           </div>
         </section>
         <section className="relative text-left border-t-8 border-black">
-          <img
+          <Image
             src="https://cdn.shopify.com/s/files/1/0043/8471/8938/files/3d53dbd0-82cb-11eb-968f-1b7758c09ec1-LandRoverDefenderQ121SiteHero2.jpg?auto=format&fm=jpg&q=80&fit=crop&crop=entropy&w=812&h=457"
             alt="Defender-110"
+            width={812}
+            height={457}
             className="w-full h-auto"
           />
           <div className="absolute bottom-0 left-0 bg-white bg-opacity-70 p-5 max-w-[80%] rounded-lg mb-14 ml-12 border-l border-black border-b border-black">
@@ -174,9 +181,11 @@ export default function index() {
           <CarouselTile />
         </section>
         <section className="relative text-left border-t-8 border-black">
-          <img
+          <Image
             src="https://www.tweakedautomotive.com/wp-content/uploads/2016/07/90-hardtop-v2.jpg"
             alt="Defender-hardtop"
+            width={1920}
+            height={1080}
             className="w-full h-auto"
           />
           <div className="absolute bottom-0 right-0 bg-gray-100 bg-opacity-60 p-5 max-w-[80%] rounded-lg mb-14 mr-12 border-r border-black border-b border-black">
@@ -215,12 +224,14 @@ export default function index() {
           </div>
         </section>
         <section className="relative text-left border-t-8  border-b-8 border-black">
-          <img
+          <Image
             src="https://media.jlrms.com/styles/low_res/s3/2021-02-09/image/ccee40d2-97ae-4ee4-bc98-cfdfac7addf9/L_Classic_Trophy_100221_21_1.jpeg?VersionId=oHlUExiOlEfpi.SYuDGkPiqv3UY7TYRj&itok=Y-ZGl86R"
             alt="Defender-services"
+            width={1920}
+            height={1080}
             className="w-full h-auto"
           />
-          <div className="absolute bottom-0 left-0 bg-white bg-opacity-70 p-5 max-w-[80%] rounded-lg mb-14 ml-12 border-l border-black border-b border-black">
+          <div className="absolute bottom-0 left-0 bg-white bg-opacity-70 p-5 max-w-[80%] rounded-lg mb-14 ml-12 border-l border-black border-b">
             <h1 className="text-5xl font-medium mb-4">Service & Maintenance</h1>
             <p className="text-lg font-semibold mb-8">
               At our dealership, we understand the importance of keeping your
