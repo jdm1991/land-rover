@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { BsDoorOpen } from "react-icons/bs";
 
@@ -14,10 +15,12 @@ export default function Layout({ children, isLoggedIn }) {
       <nav className="bg-white shadow-md sticky top-0 z-50 h-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
           <div className="flex-shrink-0 ml-2">
-            <img
+            <Image
               className="h-24 w-auto"
               src="https://images.netdirector.co.uk/gforces-auto/image/upload/q_auto,c_crop,f_auto,fl_lossy,x_562,y_397,w_5862,h_4389/w_392,h_294,c_fill/auto-client/58688494fc6b303f19a3ce260f5e9570/defender_logo.jpg"
               alt="Defender"
+              width={392}
+              height={294}
             />
           </div>
           <div className="hidden md:block">
@@ -161,13 +164,15 @@ export default function Layout({ children, isLoggedIn }) {
         <div className="max-w-7xl mx-auto">
           <div className="md:flex md:justify-between">
             <div className="mb-8 md:mb-0">
-              <a href="/" className="flex items-center">
-                <img
+              <Link href="/" className="flex items-center">
+                <Image
                   src="https://images.netdirector.co.uk/gforces-auto/image/upload/q_auto,c_crop,f_auto,fl_lossy,x_562,y_397,w_5862,h_4389/w_392,h_294,c_fill/auto-client/58688494fc6b303f19a3ce260f5e9570/defender_logo.jpg"
                   className="h-32 w-auto"
                   alt="Defender Logo"
+                  width={392}
+                  height={294}
                 />
-              </a>
+              </Link>
             </div>
             <div className="grid grid-cols-1 gap-8 sm:gap-8 sm:grid-cols-3">
               <div className="text-center">
@@ -202,40 +207,60 @@ export default function Layout({ children, isLoggedIn }) {
                 </h2>
                 <ul className="flex flex-col items-center space-y-4">
                   <li>
-                    <a href="#" className="text-gray-500 hover:text-gray-900">
-                      <img
+                    <Link
+                      href="#"
+                      className="text-gray-500 hover:text-gray-900"
+                    >
+                      <Image
                         src="https://www.svgrepo.com/show/333535/facebook-circle.svg"
                         alt="Facebook"
                         className="h-8 w-8"
+                        width={32}
+                        height={32}
                       />
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-500 hover:text-gray-900">
-                      <img
+                    <Link
+                      href="#"
+                      className="text-gray-500 hover:text-gray-900"
+                    >
+                      <Image
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/X_logo_2023_original.svg/1200px-X_logo_2023_original.svg.png"
                         alt="X"
                         className="h-8 w-8"
+                        width={32}
+                        height={32}
                       />
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-500 hover:text-gray-900">
-                      <img
+                    <Link
+                      href="#"
+                      className="text-gray-500 hover:text-gray-900"
+                    >
+                      <Image
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Instagram.svg/2048px-Instagram.svg.png"
                         alt="Instagram"
                         className="h-8 w-8"
+                        width={32}
+                        height={32}
                       />
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-500 hover:text-gray-900">
-                      <img
+                    <Link
+                      href="#"
+                      className="text-gray-500 hover:text-gray-900"
+                    >
+                      <Image
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_play_button_icon_%282013%E2%80%932017%29.svg/1024px-YouTube_play_button_icon_%282013%E2%80%932017%29.svg.png"
                         alt="Youtube"
                         className="h-8 w-8"
+                        width={32}
+                        height={32}
                       />
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -245,9 +270,9 @@ export default function Layout({ children, isLoggedIn }) {
           <div className="sm:flex sm:items-center sm:justify-between">
             <span className="text-sm text-gray-500 sm:text-center mb-8 sm:mb-0">
               © 2023{" "}
-              <a href="/" className="hover:underline">
+              <Link href="/" className="hover:underline">
                 Defender
-              </a>
+              </Link>
               . All Rights Reserved.
             </span>
             <div className="mt-8 sm:mt-0">
