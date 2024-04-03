@@ -5,7 +5,6 @@ import Layout from "../pages/layout";
 import "../pages/indexstyle.css";
 import Link from "next/link";
 
-
 export default function index() {
   function toggleMenu() {
     const menu = document.querySelector(".menu-links");
@@ -126,26 +125,25 @@ export default function index() {
           <div>
             <h2 className="text-5xl font-extralight mb-8">Our pledge to you</h2>
             <p>
-              {`"At [Dealership Name], we are committed to delivering an
-      unparalleled experience to enthusiasts of the iconic Land Rover
-      Defender. Our mission is to curate and provide the highest
-      quality, expertly restored and meticulously maintained selection
-      of Land Rover Defenders. We are dedicated to preserving the rich
-      heritage and formidable legacy of these exceptional vehicles while
-      infusing them with modern luxury and bespoke customization that
-      meet the individual desires of our discerning clientele. We pride
-      ourselves on our deep-rooted passion for the Defender's
-      unique blend of classic ruggedness and contemporary performance.
-      Our knowledgeable team offers personalized service, comprehensive
-      care, and an intimate understanding of what it means to own and
-      enjoy a Defender. Through integrity, expertise, and a commitment
-      to excellence, we strive to build lasting relationships and ensure
-      that every interaction with [Dealership Name] is as exceptional as
-      the vehicles we represent. At [Dealership Name], it's not
-      just about making a purchase; it's about embarking on a
-      journey that respects the past, celebrates the present, and
-      anticipates the future of adventure with every turn of the
-      key."`}
+              At [Dealership Name], we are committed to delivering an
+              unparalleled experience to enthusiasts of the iconic Land Rover
+              Defender. Our mission is to curate and provide the highest
+              quality, expertly restored and meticulously maintained selection
+              of Land Rover Defenders. We are dedicated to preserving the rich
+              heritage and formidable legacy of these exceptional vehicles while
+              infusing them with modern luxury and bespoke customization that
+              meet the individual desires of our discerning clientele. We pride
+              ourselves on our deep-rooted passion for the Defender&apos;s
+              unique blend of classic ruggedness and contemporary performance.
+              Our knowledgeable team offers personalized service, comprehensive
+              care, and an intimate understanding of what it means to own and
+              enjoy a Defender. Through integrity, expertise, and a commitment
+              to excellence, we strive to build lasting relationships and ensure
+              that every interaction with [Dealership Name] is as exceptional as
+              the vehicles we represent. At [Dealership Name], it&apos;s not
+              just about making a purchase; it&apos;s about embarking on a
+              journey that respects the past, celebrates the present, and
+              anticipates the future of adventure with every turn of the key.
             </p>
           </div>
         </section>
