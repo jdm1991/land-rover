@@ -20,7 +20,7 @@ const withAuth = (WrappedComponent) => {
       };
 
       checkAuth();
-    }, []);
+    }, [router]);
 
     if (!isLoggedIn) {
       return null;

@@ -24,10 +24,10 @@ export default function ServicePage() {
               </p>
               <p className="mt-4 max-w-2xl text-xl text-white lg:mx-auto">
                 At [Dealership Name], we understand that your Land Rover
-                Defender is more than just a vehicle; it's a symbol of your
-                adventurous spirit. That's why we offer comprehensive service
-                and maintenance to keep your Defender in top condition, no
-                matter where the road takes you.
+                Defender is more than just a vehicle; it&apos;s a symbol of your
+                adventurous spirit. That&apos;s why we offer comprehensive
+                service and maintenance to keep your Defender in top condition,
+                no matter where the road takes you.
               </p>
             </div>
           </div>
@@ -170,27 +170,28 @@ export default function ServicePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-md p-6">
               <p className="text-gray-600 mb-4">
-                "The team at [Dealership Name] treated my Land Rover Defender
-                with the utmost care and attention to detail. Their expertise
-                and genuine passion for these vehicles really shines through."
+                &quot;The team at [Dealership Name] treated my Land Rover
+                Defender with the utmost care and attention to detail. Their
+                expertise and genuine passion for these vehicles really shines
+                through.&quot;
               </p>
               <p className="text-[#004225] font-bold">- John D.</p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6">
               <p className="text-gray-600 mb-4">
-                "I've never experienced such exceptional service. They went
-                above and beyond to ensure my Land Rover Defender was running at
-                its best, and their commitment to using only genuine parts gives
-                me peace of mind."
+                &quot;I&apos;ve never experienced such exceptional service. They
+                went above and beyond to ensure my Land Rover Defender was
+                running at its best, and their commitment to using only genuine
+                parts gives me peace of mind.&quot;
               </p>
               <p className="text-[#004225] font-bold">- Sarah W.</p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6">
               <p className="text-gray-600 mb-4">
-                "From the moment I walked in, the team was friendly and
+                &quot;From the moment I walked in, the team was friendly and
                 knowledgeable. I trust them completely with my Land Rover
-                Defender, and I know they'll keep it adventure-ready for years
-                to come."
+                Defender, and I know they&apos;ll keep it adventure-ready for
+                years to come.&quot;
               </p>
               <p className="text-[#004225] font-bold">- Michael T.</p>
             </div>
@@ -200,4 +201,3 @@ export default function ServicePage() {
     </Layout>
   );
 }
-

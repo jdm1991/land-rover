@@ -101,7 +101,7 @@ export default function index() {
           </div>
           <div className="absolute bottom-0 left-0 w-full text-black bg-gray-100 bg-opacity-80 text-left py-8 px-12 text-4xl font-semibold border-b border-black border-opacity-20 backdrop-filter backdrop-blur-md">
             <h2 className="text-shadow-lg text-black font-['Exo_2'] font-bold text-6xl mb-4 tracking-wide">
-              Going where other vehicles don't dare.
+              Going where other vehicles don&apos;t dare.
             </h2>
             <p className="text-2xl font-light mb-8 text-gray-700 max-w-2xl">
               The finest selection of Land Rover Defenders on offer in the
@@ -129,17 +129,17 @@ export default function index() {
               heritage and formidable legacy of these exceptional vehicles while
               infusing them with modern luxury and bespoke customization that
               meet the individual desires of our discerning clientele. We pride
-              ourselves on our deep-rooted passion for the Defender's unique
-              blend of classic ruggedness and contemporary performance. Our
-              knowledgeable team offers personalized service, comprehensive
+              ourselves on our deep-rooted passion for the Defender&apos;s
+              unique blend of classic ruggedness and contemporary performance.
+              Our knowledgeable team offers personalized service, comprehensive
               care, and an intimate understanding of what it means to own and
               enjoy a Defender. Through integrity, expertise, and a commitment
               to excellence, we strive to build lasting relationships and ensure
               that every interaction with [Dealership Name] is as exceptional as
-              the vehicles we represent. At [Dealership Name], it's not just
-              about making a purchase; it's about embarking on a journey that
-              respects the past, celebrates the present, and anticipates the
-              future of adventure with every turn of the key."
+              the vehicles we represent. At [Dealership Name], it&apos;s not
+              just about making a purchase; it&apos;s about embarking on a
+              journey that respects the past, celebrates the present, and
+              anticipates the future of adventure with every turn of the key."
             </p>
           </div>
         </section>
@@ -154,13 +154,14 @@ export default function index() {
             <p className="text-lg font-semibold mb-8">
               The Land Rover Defender 110 stands as an emblem of rugged
               durability and versatile performance. Boasting a robust frame and
-              advanced 4x4 capabilities, it's designed to conquer the toughest
-              terrains with ease, whether navigating rocky mountain trails or
-              city streets. Its spacious interior, offering optional third-row
-              seating, combines practicality with comfort, making it ideal for
-              adventurous families or off-road enthusiasts. A blend of classic
-              design and modern technology, the Defender 110 is a testament to
-              enduring automotive craftsmanship and off-road supremacy.
+              advanced 4x4 capabilities, it&apos;s designed to conquer the
+              toughest terrains with ease, whether navigating rocky mountain
+              trails or city streets. Its spacious interior, offering optional
+              third-row seating, combines practicality with comfort, making it
+              ideal for adventurous families or off-road enthusiasts. A blend of
+              classic design and modern technology, the Defender 110 is a
+              testament to enduring automotive craftsmanship and off-road
+              supremacy.
             </p>
             <Link href="/vehicles">
               <button className="bg-[#004225] rounded-lg text-white border-none py-2 px-4 font-['Outfit'] text-base cursor-pointer transition duration-300 ease-in-out hover:bg-gray-600 w-32">
@@ -193,16 +194,16 @@ export default function index() {
               deployable roof ladders and electronic winch kits are available,
               making challenging adventures more accessible. Stylish exterior
               modifications, such as personalized grille designs, alloy wheels,
-              and side-mounted gear carriers, not only augment the vehicle's
-              appearance but also its practicality. Tech-savvy drivers can enjoy
-              advanced navigation and entertainment system upgrades, keeping
-              them connected wherever they roam. Each accessory, from protective
-              covers to lighting enhancements, is designed to elevate the iconic
-              Land Rover Defender's experience, making it a truly adaptable
-              vehicle for urban commutes or wilderness explorations. This
-              comprehensive range of accessories ensures that every Land Rover
-              Defender is not just a vehicle, but a personalized companion for
-              life's adventures.
+              and side-mounted gear carriers, not only augment the
+              vehicle&apos;s appearance but also its practicality. Tech-savvy
+              drivers can enjoy advanced navigation and entertainment system
+              upgrades, keeping them connected wherever they roam. Each
+              accessory, from protective covers to lighting enhancements, is
+              designed to elevate the iconic Land Rover Defender&apos;s
+              experience, making it a truly adaptable vehicle for urban commutes
+              or wilderness explorations. This comprehensive range of
+              accessories ensures that every Land Rover Defender is not just a
+              vehicle, but a personalized companion for life&apos;s adventures.
             </p>
             <div className="text-right">
               <Link href="/accessories">

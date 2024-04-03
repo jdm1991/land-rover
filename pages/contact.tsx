@@ -23,10 +23,10 @@ export default function Contact() {
               </p>
               <p className="mt-4 max-w-2xl text-xl text-white lg:mx-auto">
                 At [Dealership Name], your journey towards adventure begins with
-                a single step—or a single message. Whether you're looking to
-                explore the rugged capabilities of the Land Rover Defender or
-                simply want to find out more about our exclusive offers, we're
-                here to guide you every step of the way.
+                a single step—or a single message. Whether you&apos;re looking
+                to explore the rugged capabilities of the Land Rover Defender or
+                simply want to find out more about our exclusive offers,
+                we&apos;re here to guide you every step of the way.
               </p>
             </div>
 
@@ -56,10 +56,10 @@ export default function Contact() {
                     </p>
                   </dt>
                   <dd className="mt-2 ml-16 text-base text-white">
-                    Because every question, every detail matters when you're
-                    choosing not just a vehicle, but a companion for your
-                    adventures. From personalized consultations to test drives
-                    that thrill, our team is dedicated to providing an
+                    Because every question, every detail matters when
+                    you&apos;re choosing not just a vehicle, but a companion for
+                    your adventures. From personalized consultations to test
+                    drives that thrill, our team is dedicated to providing an
                     experience as premium as the vehicles we pride ourselves on.
                   </dd>
                 </div>
@@ -89,11 +89,12 @@ export default function Contact() {
                   </dt>
                   <dd className="mt-2 ml-16 text-base text-white">
                     Curious about customization options, financing solutions, or
-                    the Defender's latest features? We're all ears—and
+                    the Defender&apos;s latest features? We&apos;re all ears—and
                     expertise. Fill out the contact form, drop us an email, or
-                    give us a call. Better yet, if you're in the neighborhood,
-                    why not stop by? There's nothing we love more than talking
-                    Land Rover Defender and helping dreams hit the road.
+                    give us a call. Better yet, if you&apos;re in the
+                    neighborhood, why not stop by? There&apos;s nothing we love
+                    more than talking Land Rover Defender and helping dreams hit
+                    the road.
                   </dd>
                 </div>
               </dl>
@@ -109,8 +110,8 @@ export default function Contact() {
               Connect With Us Today
             </h2>
             <p className="mt-4 text-lg text-gray-500">
-              Let's make your Land Rover Defender aspirations a reality. Get in
-              touch now and let the adventure begin!
+              Let&apos;s make your Land Rover Defender aspirations a reality.
+              Get in touch now and let the adventure begin!
             </p>
           </div>
           <div className="mt-12">
