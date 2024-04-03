@@ -189,7 +189,7 @@ export default function index() {
           />
           <div className="absolute bottom-0 right-0 bg-gray-100 bg-opacity-60 p-5 max-w-[80%] rounded-lg mb-14 mr-12 border-r border-black border-b border-black">
             <h1 className="text-5xl font-medium mb-4">Accessories</h1>
-            <p className="text-base font-semibold mb-8 text-black">
+            {/* <p className="text-base font-semibold mb-8 text-black">
               The Land Rover Defender, a symbol of versatility and robust
               design, offers a wide array of accessories to cater to every kind
               of journey and lifestyle. Our collection extends across all
@@ -212,7 +212,7 @@ export default function index() {
               or wilderness explorations. This comprehensive range of
               accessories ensures that every Land Rover Defender is not just a
               vehicle, but a personalized companion for life&apos;s adventures.
-            </p>
+            </p> */}
             <div className="text-right">
               <Link href="/accessories">
                 <button className="bg-[#004225] rounded-lg text-white border-none py-2 px-4 font-['Outfit'] text-base cursor-pointer transition duration-300 ease-in-out hover:bg-gray-600 w-32">
