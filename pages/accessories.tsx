@@ -1,18 +1,23 @@
 import Layout from "./layout";
 import React, { useState } from "react";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Accessories as AccessoriesType } from "@prisma/client";
 import "../app/globals.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
 const prisma = new PrismaClient();
 
-export default function Accessories({ accessories }) {
-  const [selectedAccessory, setSelectedAccessory] = useState(null);
-  const [basket, setBasket] = useState([]);
+export default function Accessories({
+  accessories,
+}: {
+  accessories: AccessoriesType[];
+}) {
+  const [selectedAccessory, setSelectedAccessory] =
+    useState<AccessoriesType | null>(null);
+  const [basket, setBasket] = useState<AccessoriesType[]>([]);
   const router = useRouter();
 
-  const formatCurrency = (value) => {
+  const formatCurrency = (value: number) => {
     const priceInPounds = value / 100;
     return new Intl.NumberFormat("en-GB", {
       style: "currency",
@@ -20,11 +25,11 @@ export default function Accessories({ accessories }) {
     }).format(priceInPounds);
   };
 
-  const selectAccessory = (accessory) => {
+  const selectAccessory = (accessory: AccessoriesType) => {
     setSelectedAccessory(accessory);
   };
 
-  const addToBasket = (accessory) => {
+  const addToBasket = (accessory: AccessoriesType) => {
     const existingItem = basket.find((item) => item.id === accessory.id);
     if (existingItem) {
       setBasket(
@@ -39,11 +44,11 @@ export default function Accessories({ accessories }) {
     }
   };
 
-  const removeFromBasket = (accessoryId) => {
+  const removeFromBasket = (accessoryId: number) => {
     const existingItem = basket.find((item) => item.id === accessoryId);
-    if (existingItem.quantity === 1) {
+    if (existingItem && existingItem.quantity === 1) {
       setBasket(basket.filter((item) => item.id !== accessoryId));
-    } else {
+    } else if (existingItem) {
       setBasket(
         basket.map((item) =>
           item.id === accessoryId
@@ -82,9 +87,11 @@ export default function Accessories({ accessories }) {
                 }`}
                 onClick={() => selectAccessory(accessory)}
               >
-                <img
+                <Image
                   src={accessory.imageUrl}
                   alt="thumbnail"
+                  width={120}
+                  height={50}
                   className="w-[120px] h-[50px] object-cover mr-4"
                 />
                 <div>
@@ -98,9 +105,11 @@ export default function Accessories({ accessories }) {
           <div className="flex-grow overflow-y-auto">
             {!selectedAccessory && (
               <div className="flex justify-center items-center h-full opacity-30">
-                <img
+                <Image
                   src="/LandRoverLogo.png"
                   alt="Logo"
+                  width={500}
+                  height={500}
                   className="max-w-full max-h-full"
                 />
               </div>
@@ -108,9 +117,11 @@ export default function Accessories({ accessories }) {
             {selectedAccessory && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="grid-in-image">
-                  <img
+                  <Image
                     src={selectedAccessory.imageUrl}
                     alt={selectedAccessory.name}
+                    width={800}
+                    height={600}
                     className="w-full max-h-[30rem] object-cover rounded-lg"
                   />
                 </div>
