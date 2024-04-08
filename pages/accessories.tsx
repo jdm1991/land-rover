@@ -46,16 +46,14 @@ export default function Accessories({ accessories }: AccessoriesProps) {
         )
       );
     } else {
-      setBasket([
-        ...basket,
-        {
-          id: accessory.id,
-          name: accessory.name,
-          price: accessory.price,
-          imageUrl: accessory.imageUrl,
-          quantity: 1,
-        },
-      ]);
+      const newItem: BasketItem = {
+        id: accessory.id,
+        name: accessory.name,
+        price: accessory.price,
+        imageUrl: accessory.imageUrl,
+        quantity: 1,
+      };
+      setBasket([...basket, newItem]);
     }
   };
 
