@@ -5,8 +5,6 @@ import "../app/globals.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-const prisma = new PrismaClient();
-
 type AccessoriesProps = {
   accessories: AccessoriesType[];
 };
@@ -206,11 +204,11 @@ export default function Accessories({ accessories }: AccessoriesProps) {
 
 export async function getServerSideProps() {
   try {
-    const accessories = await prisma.accessories.findMany();
-
+    const prisma = new PrismaClient();
+    const accessoriesData = await prisma.accessories.findMany();
     return {
       props: {
-        accessories,
+        accessories: JSON.parse(JSON.stringify(accessoriesData)),
       },
     };
   } catch (error) {
