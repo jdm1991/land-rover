@@ -1,29 +1,18 @@
 import Layout from "./layout";
 import React, { useState } from "react";
-import { PrismaClient, Accessories as AccessoriesType } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import "../app/globals.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-type BasketItem = {
-  id: number;
-  name: string;
-  price: number;
-  imageUrl: string;
-  quantity: number;
-};
+const prisma = new PrismaClient();
 
-type AccessoriesProps = {
-  accessories: AccessoriesType[];
-};
-
-export default function Accessories({ accessories }: AccessoriesProps) {
-  const [selectedAccessory, setSelectedAccessory] =
-    useState<AccessoriesType | null>(null);
-  const [basket, setBasket] = useState<BasketItem[]>([]);
+export default function Accessories({ accessories }) {
+  const [selectedAccessory, setSelectedAccessory] = useState(null);
+  const [basket, setBasket] = useState([]);
   const router = useRouter();
 
-  const formatCurrency = (value: number) => {
+  const formatCurrency = (value) => {
     const priceInPounds = value / 100;
     return new Intl.NumberFormat("en-GB", {
       style: "currency",
@@ -31,11 +20,11 @@ export default function Accessories({ accessories }: AccessoriesProps) {
     }).format(priceInPounds);
   };
 
-  const selectAccessory = (accessory: AccessoriesType) => {
+  const selectAccessory = (accessory) => {
     setSelectedAccessory(accessory);
   };
 
-  const addToBasket = (accessory: AccessoriesType) => {
+  const addToBasket = (accessory) => {
     const existingItem = basket.find((item) => item.id === accessory.id);
     if (existingItem) {
       setBasket(
@@ -46,22 +35,15 @@ export default function Accessories({ accessories }: AccessoriesProps) {
         )
       );
     } else {
-      const newItem: BasketItem = {
-        id: accessory.id,
-        name: accessory.name,
-        price: accessory.price,
-        imageUrl: accessory.imageUrl,
-        quantity: 1,
-      };
-      setBasket([...basket, newItem]);
+      setBasket([...basket, { ...accessory, quantity: 1 }]);
     }
   };
 
-  const removeFromBasket = (accessoryId: number) => {
+  const removeFromBasket = (accessoryId) => {
     const existingItem = basket.find((item) => item.id === accessoryId);
-    if (existingItem && existingItem.quantity === 1) {
+    if (existingItem.quantity === 1) {
       setBasket(basket.filter((item) => item.id !== accessoryId));
-    } else if (existingItem) {
+    } else {
       setBasket(
         basket.map((item) =>
           item.id === accessoryId
@@ -100,11 +82,9 @@ export default function Accessories({ accessories }: AccessoriesProps) {
                 }`}
                 onClick={() => selectAccessory(accessory)}
               >
-                <Image
+                <img
                   src={accessory.imageUrl}
                   alt="thumbnail"
-                  width={120}
-                  height={50}
                   className="w-[120px] h-[50px] object-cover mr-4"
                 />
                 <div>
@@ -118,11 +98,9 @@ export default function Accessories({ accessories }: AccessoriesProps) {
           <div className="flex-grow overflow-y-auto">
             {!selectedAccessory && (
               <div className="flex justify-center items-center h-full opacity-30">
-                <Image
+                <img
                   src="/LandRoverLogo.png"
                   alt="Logo"
-                  width={500}
-                  height={500}
                   className="max-w-full max-h-full"
                 />
               </div>
@@ -130,11 +108,9 @@ export default function Accessories({ accessories }: AccessoriesProps) {
             {selectedAccessory && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="grid-in-image">
-                  <Image
+                  <img
                     src={selectedAccessory.imageUrl}
                     alt={selectedAccessory.name}
-                    width={800}
-                    height={600}
                     className="w-full max-h-[30rem] object-cover rounded-lg"
                   />
                 </div>
@@ -219,11 +195,11 @@ export default function Accessories({ accessories }: AccessoriesProps) {
 
 export async function getServerSideProps() {
   try {
-    const prisma = new PrismaClient();
-    const accessoriesData = await prisma.accessories.findMany();
+    const accessories = await prisma.accessories.findMany();
+
     return {
       props: {
-        accessories: JSON.parse(JSON.stringify(accessoriesData)),
+        accessories,
       },
     };
   } catch (error) {
