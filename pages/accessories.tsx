@@ -58,6 +58,13 @@ export default function Accessories({ accessories }) {
     }
   };
 
+  const getTotalPrice = () => {
+    return basket.reduce(
+      (total, item) => total + (item.price || 0) * (item.quantity || 0),
+      0
+    );
+  };
+
   return (
     <Layout>
       <div className="grid grid-cols-[25rem_1fr] h-[calc(100vh-6rem)]">
