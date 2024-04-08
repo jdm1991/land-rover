@@ -5,6 +5,10 @@ import "../app/globals.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
+type AccessoryWithQuantity = AccessoriesType & {
+  quantity?: number;
+};
+
 type AccessoriesProps = {
   accessories: AccessoriesType[];
 };
@@ -12,7 +16,7 @@ type AccessoriesProps = {
 export default function Accessories({ accessories }: AccessoriesProps) {
   const [selectedAccessory, setSelectedAccessory] =
     useState<AccessoriesType | null>(null);
-  const [basket, setBasket] = useState<AccessoriesType[]>([]);
+  const [basket, setBasket] = useState<AccessoryWithQuantity[]>([]);
   const router = useRouter();
 
   const formatCurrency = (value: number) => {
