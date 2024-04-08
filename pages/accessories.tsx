@@ -5,8 +5,12 @@ import "../app/globals.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-type AccessoryWithQuantity = AccessoriesType & {
-  quantity?: number;
+type BasketItem = {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+  quantity: number;
 };
 
 type AccessoriesProps = {
@@ -16,7 +20,7 @@ type AccessoriesProps = {
 export default function Accessories({ accessories }: AccessoriesProps) {
   const [selectedAccessory, setSelectedAccessory] =
     useState<AccessoriesType | null>(null);
-  const [basket, setBasket] = useState<AccessoryWithQuantity[]>([]);
+  const [basket, setBasket] = useState<BasketItem[]>([]);
   const router = useRouter();
 
   const formatCurrency = (value: number) => {
@@ -37,12 +41,21 @@ export default function Accessories({ accessories }: AccessoriesProps) {
       setBasket(
         basket.map((item) =>
           item.id === accessory.id
-            ? { ...item, quantity: (item.quantity || 0) + 1 }
+            ? { ...item, quantity: item.quantity + 1 }
             : item
         )
       );
     } else {
-      setBasket([...basket, { ...accessory, quantity: 1 }]);
+      setBasket([
+        ...basket,
+        {
+          id: accessory.id,
+          name: accessory.name,
+          price: accessory.price,
+          imageUrl: accessory.imageUrl,
+          quantity: 1,
+        },
+      ]);
     }
   };
 
@@ -54,7 +67,7 @@ export default function Accessories({ accessories }: AccessoriesProps) {
       setBasket(
         basket.map((item) =>
           item.id === accessoryId
-            ? { ...item, quantity: (item.quantity || 0) - 1 }
+            ? { ...item, quantity: item.quantity - 1 }
             : item
         )
       );
@@ -63,7 +76,7 @@ export default function Accessories({ accessories }: AccessoriesProps) {
 
   const getTotalPrice = () => {
     return basket.reduce(
-      (total, item) => total + item.price * (item.quantity || 0),
+      (total, item) => total + item.price * item.quantity,
       0
     );
   };
@@ -178,7 +191,7 @@ export default function Accessories({ accessories }: AccessoriesProps) {
                       </button>
                     </div>
                     <div className="w-20 text-right">
-                      {formatCurrency(item.price * (item.quantity || 0))}
+                      {formatCurrency(item.price * item.quantity)}
                     </div>
                   </div>
                 ))}
