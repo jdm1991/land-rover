@@ -26,11 +26,12 @@ export default function Accessories({ accessories }) {
 
   const addToBasket = (accessory) => {
     const existingItem = basket.find((item) => item.id === accessory.id);
+
     if (existingItem) {
       setBasket(
         basket.map((item) =>
           item.id === accessory.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: (item.quantity || 0) + 1 }
             : item
         )
       );
@@ -41,24 +42,20 @@ export default function Accessories({ accessories }) {
 
   const removeFromBasket = (accessoryId) => {
     const existingItem = basket.find((item) => item.id === accessoryId);
-    if (existingItem.quantity === 1) {
-      setBasket(basket.filter((item) => item.id !== accessoryId));
-    } else {
-      setBasket(
-        basket.map((item) =>
-          item.id === accessoryId
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-      );
-    }
-  };
 
-  const getTotalPrice = () => {
-    return basket.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
+    if (existingItem) {
+      if (existingItem.quantity === 1) {
+        setBasket(basket.filter((item) => item.id !== accessoryId));
+      } else {
+        setBasket(
+          basket.map((item) =>
+            item.id === accessoryId
+              ? { ...item, quantity: (item.quantity || 1) - 1 }
+              : item
+          )
+        );
+      }
+    }
   };
 
   return (
