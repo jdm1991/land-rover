@@ -11,7 +11,9 @@ import { useRouter } from "next/router";
 export default function Checkout() {
   const router = useRouter();
   const { basket: basketQuery } = router.query;
-  const basket = basketQuery ? JSON.parse(basketQuery) : [];
+  const basket = basketQuery
+    ? JSON.parse(Array.isArray(basketQuery) ? basketQuery[0] : basketQuery)
+    : [];
 
   const [deliveryDetails, setDeliveryDetails] = useState({
     name: "",
