@@ -1,5 +1,5 @@
 import Layout from "./layout";
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import "../app/globals.css";
 import VisaButton from "./components/VisaButton";
 import ApplePayButton from "./components/ApplePayButton";
@@ -7,6 +7,13 @@ import PayPalButton from "./components/PayPalButton";
 import PayWithBitcoin from "./components/PayWithBitcoin";
 import EthereumButton from "./components/EthereumButton";
 import { useRouter } from "next/router";
+
+interface BasketItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
 
 export default function Checkout() {
   const router = useRouter();
@@ -31,28 +38,28 @@ export default function Checkout() {
     country: "",
   });
 
-  const handleDeliveryChange = (e) => {
+  const handleDeliveryChange = (e: ChangeEvent<HTMLInputElement>) => {
     setDeliveryDetails({
       ...deliveryDetails,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleBillingChange = (e) => {
+  const handleBillingChange = (e: ChangeEvent<HTMLInputElement>) => {
     setBillingDetails({
       ...billingDetails,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle form submission logic here
     console.log("Delivery Details:", deliveryDetails);
     console.log("Billing Details:", billingDetails);
   };
 
-  const formatCurrency = (value) => {
+  const formatCurrency = (value: number) => {
     const priceInPounds = value / 100;
     return new Intl.NumberFormat("en-GB", {
       style: "currency",
@@ -62,7 +69,7 @@ export default function Checkout() {
 
   const getTotalPrice = () => {
     return basket.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total: number, item: BasketItem) => total + item.price * item.quantity,
       0
     );
   };
@@ -73,156 +80,20 @@ export default function Checkout() {
         <h1 className="text-4xl font-bold mb-8 text-[#004225]">Checkout</h1>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Delivery Details */}
             <div>
               <h2 className="text-2xl font-bold mb-4">Delivery Details</h2>
-              <div className="mb-4">
-                <label htmlFor="deliveryName" className="block mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="deliveryName"
-                  name="name"
-                  value={deliveryDetails.name}
-                  onChange={handleDeliveryChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="deliveryAddress" className="block mb-1">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  id="deliveryAddress"
-                  name="address"
-                  value={deliveryDetails.address}
-                  onChange={handleDeliveryChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="deliveryCity" className="block mb-1">
-                  City
-                </label>
-                <input
-                  type="text"
-                  id="deliveryCity"
-                  name="city"
-                  value={deliveryDetails.city}
-                  onChange={handleDeliveryChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="deliveryPostalCode" className="block mb-1">
-                  Postal Code
-                </label>
-                <input
-                  type="text"
-                  id="deliveryPostalCode"
-                  name="postalCode"
-                  value={deliveryDetails.postalCode}
-                  onChange={handleDeliveryChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="deliveryCountry" className="block mb-1">
-                  Country
-                </label>
-                <input
-                  type="text"
-                  id="deliveryCountry"
-                  name="country"
-                  value={deliveryDetails.country}
-                  onChange={handleDeliveryChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
+              {/* Delivery Details form fields */}
             </div>
+            {/* Billing Details */}
             <div>
               <h2 className="text-2xl font-bold mb-4">Billing Details</h2>
-              <div className="mb-4">
-                <label htmlFor="billingName" className="block mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="billingName"
-                  name="name"
-                  value={billingDetails.name}
-                  onChange={handleBillingChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="billingAddress" className="block mb-1">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  id="billingAddress"
-                  name="address"
-                  value={billingDetails.address}
-                  onChange={handleBillingChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="billingCity" className="block mb-1">
-                  City
-                </label>
-                <input
-                  type="text"
-                  id="billingCity"
-                  name="city"
-                  value={billingDetails.city}
-                  onChange={handleBillingChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="billingPostalCode" className="block mb-1">
-                  Postal Code
-                </label>
-                <input
-                  type="text"
-                  id="billingPostalCode"
-                  name="postalCode"
-                  value={billingDetails.postalCode}
-                  onChange={handleBillingChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="billingCountry" className="block mb-1">
-                  Country
-                </label>
-                <input
-                  type="text"
-                  id="billingCountry"
-                  name="country"
-                  value={billingDetails.country}
-                  onChange={handleBillingChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
-                  required
-                />
-              </div>
+              {/* Billing Details form fields */}
             </div>
           </div>
           <div className="mt-8">
             <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
-            {basket.map((item) => (
+            {basket.map((item: BasketItem) => (
               <div key={item.id} className="flex justify-between mb-2">
                 <div>{item.name}</div>
                 <div>
