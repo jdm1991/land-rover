@@ -7,12 +7,27 @@ import { useRouter } from "next/router";
 
 const prisma = new PrismaClient();
 
-export default function Accessories({ accessories }) {
-  const [selectedAccessory, setSelectedAccessory] = useState(null);
-  const [basket, setBasket] = useState([]);
+interface Accessory {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  quantity: number;
+  imageUrl: string;
+}
+
+export default function Accessories({
+  accessories,
+}: {
+  accessories: Accessory[];
+}) {
+  const [selectedAccessory, setSelectedAccessory] = useState<Accessory | null>(
+    null
+  );
+  const [basket, setBasket] = useState<Accessory[]>([]);
   const router = useRouter();
 
-  const formatCurrency = (value) => {
+  const formatCurrency = (value: number) => {
     const priceInPounds = value / 100;
     return new Intl.NumberFormat("en-GB", {
       style: "currency",
@@ -20,36 +35,38 @@ export default function Accessories({ accessories }) {
     }).format(priceInPounds);
   };
 
-  const selectAccessory = (accessory) => {
+  const selectAccessory = (accessory: Accessory) => {
     setSelectedAccessory(accessory);
   };
 
-const addToBasket = (accessory) => {
-  const existingItem = basket.find((item) => item.id === accessory.id);
+  const addToBasket = (accessory: Accessory) => {
+    const existingItem = basket.find((item) => item.id === accessory.id);
 
-  if (existingItem) {
-    const updatedQuantity = existingItem.quantity + 1;
-    if (updatedQuantity > accessory.quantity) {
-      alert(
-        `Sorry, only ${accessory.quantity} units of ${accessory.name} are available.`
+    if (existingItem) {
+      const updatedQuantity = existingItem.quantity + 1;
+      if (updatedQuantity > accessory.quantity) {
+        alert(
+          `Sorry, only ${accessory.quantity} units of ${accessory.name} are available.`
+        );
+        return;
+      }
+      setBasket(
+        basket.map((item) =>
+          item.id === accessory.id
+            ? { ...item, quantity: updatedQuantity }
+            : item
+        )
       );
-      return;
+    } else {
+      if (accessory.quantity < 1) {
+        alert(`Sorry, ${accessory.name} is out of stock.`);
+        return;
+      }
+      setBasket([...basket, { ...accessory, quantity: 1 }]);
     }
-    setBasket(
-      basket.map((item) =>
-        item.id === accessory.id ? { ...item, quantity: updatedQuantity } : item
-      )
-    );
-  } else {
-    if (accessory.quantity < 1) {
-      alert(`Sorry, ${accessory.name} is out of stock.`);
-      return;
-    }
-    setBasket([...basket, { ...accessory, quantity: 1 }]);
-  }
-};
-  
-  const removeFromBasket = (accessoryId) => {
+  };
+
+  const removeFromBasket = (accessoryId: number) => {
     const existingItem = basket.find((item) => item.id === accessoryId);
 
     if (existingItem) {
@@ -230,14 +247,14 @@ export async function getServerSideProps() {
 
     return {
       props: {
-        accessories,
+        accessories: accessories as Accessory[],
       },
     };
   } catch (error) {
     console.error("Error fetching accessories:", error);
     return {
       props: {
-        accessories: [],
+        accessories: [] as Accessory[],
       },
     };
   }
