@@ -24,22 +24,31 @@ export default function Accessories({ accessories }) {
     setSelectedAccessory(accessory);
   };
 
-  const addToBasket = (accessory) => {
-    const existingItem = basket.find((item) => item.id === accessory.id);
+const addToBasket = (accessory) => {
+  const existingItem = basket.find((item) => item.id === accessory.id);
 
-    if (existingItem) {
-      setBasket(
-        basket.map((item) =>
-          item.id === accessory.id
-            ? { ...item, quantity: (item.quantity || 0) + 1 }
-            : item
-        )
+  if (existingItem) {
+    const updatedQuantity = existingItem.quantity + 1;
+    if (updatedQuantity > accessory.quantity) {
+      alert(
+        `Sorry, only ${accessory.quantity} units of ${accessory.name} are available.`
       );
-    } else {
-      setBasket([...basket, { ...accessory, quantity: 1 }]);
+      return;
     }
-  };
-
+    setBasket(
+      basket.map((item) =>
+        item.id === accessory.id ? { ...item, quantity: updatedQuantity } : item
+      )
+    );
+  } else {
+    if (accessory.quantity < 1) {
+      alert(`Sorry, ${accessory.name} is out of stock.`);
+      return;
+    }
+    setBasket([...basket, { ...accessory, quantity: 1 }]);
+  }
+};
+  
   const removeFromBasket = (accessoryId) => {
     const existingItem = basket.find((item) => item.id === accessoryId);
 
@@ -163,7 +172,14 @@ export default function Accessories({ accessories }) {
                       </span>
                       <button
                         className="bg-gray-200 px-2 py-1 rounded"
-                        onClick={() => addToBasket(item)}
+                        onClick={() => {
+                          const accessory = accessories.find(
+                            (acc) => acc.id === item.id
+                          );
+                          if (accessory) {
+                            addToBasket(accessory);
+                          }
+                        }}
                       >
                         +
                       </button>
@@ -199,7 +215,18 @@ export default function Accessories({ accessories }) {
 
 export async function getServerSideProps() {
   try {
-    const accessories = await prisma.accessories.findMany();
+    const accessories = await prisma.accessories.findMany({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        price: true,
+        quantity: true,
+        imageUrl: true,
+      },
+    });
+
+    console.log("Fetched accessories:", accessories);
 
     return {
       props: {

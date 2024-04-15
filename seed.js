@@ -90,33 +90,70 @@ const accessories = [
     name: "Floor Mats",
     description: "Premium rubber layer for the floor of your foot temple",
     price: 2999,
+    quantity: 9,
     imageUrl: "https://i.imgur.com/1CGyZr3.jpg",
   },
   {
     name: "Fluffy Dice",
     description: "Become the syle master you were born to be.",
     price: 2999,
+    quantity: 9,
     imageUrl: "https://i.imgur.com/kXYDiKi.jpg",
   },
   {
     name: "Gear Knob",
     description: "Premium gear knob for your manual vehicle.",
     price: 8999,
+    quantity: 9,
     imageUrl: "https://i.imgur.com/AHnRMAt.jpg",
   },
   {
     name: "Ladder",
     description: "Ladder for climbing up and down your stylish ride.",
     price: 15999,
+    quantity: 9,
     imageUrl: "https://i.imgur.com/2FlLuv2.jpg",
   },
 ];
 
 async function clearDatabase() {
   try {
-    await prisma.cars.deleteMany();
-    await prisma.accessories.deleteMany();
-    await prisma.user.deleteMany();
+    // Drop all tables
+    await prisma.$executeRaw`DROP TABLE IF EXISTS "Cars" CASCADE;`;
+    await prisma.$executeRaw`DROP TABLE IF EXISTS "Accessories" CASCADE;`;
+    await prisma.$executeRaw`DROP TABLE IF EXISTS "User" CASCADE;`;
+
+    // Re-create the tables
+    await prisma.$executeRaw`CREATE TABLE "User" (
+      "id" SERIAL PRIMARY KEY,
+      "email" TEXT UNIQUE NOT NULL,
+      "password" TEXT NOT NULL,
+      "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      "updatedAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );`;
+
+    await prisma.$executeRaw`CREATE TABLE "Cars" (
+      "id" SERIAL PRIMARY KEY,
+      "name" TEXT NOT NULL,
+      "price" INTEGER NOT NULL,
+      "image_url" TEXT NOT NULL,
+      "mileage" INTEGER NOT NULL,
+      "colour" TEXT NOT NULL,
+      "gearbox" TEXT NOT NULL,
+      "year" INTEGER NOT NULL,
+      "description" TEXT NOT NULL,
+      "identifier" TEXT
+    );`;
+
+    await prisma.$executeRaw`CREATE TABLE "Accessories" (
+      "id" SERIAL PRIMARY KEY,
+      "name" TEXT NOT NULL,
+      "quantity" INTEGER NOT NULL,
+      "description" TEXT NOT NULL,
+      "price" INTEGER NOT NULL,
+      "image_url" TEXT NOT NULL
+    );`;
+
     console.log("Database cleared successfully.");
   } catch (error) {
     console.error(`Error clearing database: ${error.message}`);
