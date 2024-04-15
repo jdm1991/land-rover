@@ -163,10 +163,10 @@ export default function Contact() {
                   <textarea
                     id="message"
                     name="message"
-                    rows="4"
+                    rows={4}
                     className="py-3 px-4 block w-full shadow-sm focus:ring-green-500 focus:border-green-500 border border-gray-300 rounded-md focus:border-black"
                     required
-                    maxLength="1000"
+                    maxLength={1000}
                   ></textarea>
                 </div>
               </div>
