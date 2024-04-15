@@ -1,4 +1,3 @@
-// AdminConsole.js
 import React, { useState } from "react";
 import { PrismaClient } from "@prisma/client";
 import Layout from "./layout";
@@ -8,7 +7,13 @@ import { BsDoorOpen } from "react-icons/bs";
 
 const prisma = new PrismaClient();
 
-const AdminConsole = ({ isLoggedIn, handleLogout }) => {
+const AdminConsole = ({
+  isLoggedIn,
+  handleLogout,
+}: {
+  isLoggedIn: boolean;
+  handleLogout: () => void;
+}) => {
   const [newAccessory, setNewAccessory] = useState({
     name: "",
     description: "",
@@ -30,20 +35,24 @@ const AdminConsole = ({ isLoggedIn, handleLogout }) => {
   const [accessoryErrors, setAccessoryErrors] = useState({});
   const [vehicleErrors, setVehicleErrors] = useState({});
 
-  const handleAccessoryChange = (e) => {
+  const handleAccessoryChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setNewAccessory({ ...newAccessory, [e.target.name]: e.target.value });
     setAccessoryErrors({ ...accessoryErrors, [e.target.name]: "" });
   };
 
-  const handleVehicleChange = (e) => {
+  const handleVehicleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setNewVehicle({ ...newVehicle, [e.target.name]: e.target.value });
     setVehicleErrors({ ...vehicleErrors, [e.target.name]: "" });
   };
 
   const validateAccessory = () => {
-    let errors = {};
+    let errors: Record<string, string> = {};
     Object.keys(newAccessory).forEach((key) => {
-      if (!newAccessory[key]) {
+      if (!newAccessory[key as keyof typeof newAccessory]) {
         errors[key] = `Please enter a value for ${key}`;
       }
     });
@@ -52,9 +61,9 @@ const AdminConsole = ({ isLoggedIn, handleLogout }) => {
   };
 
   const validateVehicle = () => {
-    let errors = {};
+    let errors: Record<string, string> = {};
     Object.keys(newVehicle).forEach((key) => {
-      if (!newVehicle[key]) {
+      if (!newVehicle[key as keyof typeof newVehicle]) {
         errors[key] = `Please enter a value for ${key}`;
       }
     });
@@ -74,11 +83,8 @@ const AdminConsole = ({ isLoggedIn, handleLogout }) => {
         });
 
         if (response.ok) {
-          // Accessory created successfully
           console.log("New accessory created");
-          // Optionally, you can reset the form fields or perform additional actions
         } else {
-          // Handle error
           console.error("Error creating accessory");
         }
       } catch (error) {
@@ -99,11 +105,8 @@ const AdminConsole = ({ isLoggedIn, handleLogout }) => {
         });
 
         if (response.ok) {
-          // Vehicle created successfully
           console.log("New vehicle created");
-          // Optionally, you can reset the form fields or perform additional actions
         } else {
-          // Handle error
           console.error("Error creating vehicle");
         }
       } catch (error) {
@@ -119,11 +122,6 @@ const AdminConsole = ({ isLoggedIn, handleLogout }) => {
     } catch (error) {
       console.error("Error fetching contact messages:", error);
     }
-  };
-
-  handleLogout = () => {
-    // Implement your logout logic here
-    console.log("Logout clicked");
   };
 
   return (
