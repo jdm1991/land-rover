@@ -1,15 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { BsDoorOpen } from "react-icons/bs";
 
-export default function Layout({ children }) {
+type LayoutProps = {
+  children: ReactNode;
+};
+
+export default function Layout({ children }: LayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
-
+  
   return (
     <>
       <nav className="bg-white shadow-md sticky top-0 z-50 h-24">
