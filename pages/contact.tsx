@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "./layout";
+import "../app/globals.css";
 
 export default function Contact() {
   return (
