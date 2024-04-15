@@ -9,31 +9,31 @@ export default function Portal() {
   const [error, setError] = useState("");
   const router = useRouter();
 
- const handleSubmit = async (e) => {
-   e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-   try {
-     const response = await fetch("/api/auth", {
-       method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify({ email, password }),
-     });
+    try {
+      const response = await fetch("/api/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-     if (response.ok) {
-       const { token } = await response.json();
-       localStorage.setItem("token", token);
-       router.push("/adminConsole");
-     } else {
-       const { message } = await response.json();
-       setError(message);
-     }
-   } catch (error) {
-     console.error(error);
-     setError("Something went wrong");
-   }
- };
+      if (response.ok) {
+        const { token } = await response.json();
+        localStorage.setItem("token", token);
+        router.push("/adminConsole");
+      } else {
+        const { message } = await response.json();
+        setError(message);
+      }
+    } catch (error) {
+      console.error(error);
+      setError("Something went wrong");
+    }
+  };
 
   return (
     <Layout>
