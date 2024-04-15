@@ -9,10 +9,22 @@ import Image from "next/image";
 
 const prisma = new PrismaClient();
 
-export default function Vehicles({ vehicles }) {
-  const [selectedVehicle, setSelectedVehicle] = useState(null);
+interface Vehicle {
+  id: string;
+  name: string;
+  imageUrl: string;
+  description: string;
+  year: number;
+  gearbox: string;
+  colour: string;
+  mileage: string | number;
+  price: number;
+}
 
-  const formatCurrency = (value) => {
+export default function Vehicles({ vehicles }: { vehicles: Vehicle[] }) {
+  const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
+
+  const formatCurrency = (value: number) => {
     const priceInPounds = value / 100;
     return new Intl.NumberFormat("en-GB", {
       style: "currency",
@@ -20,7 +32,7 @@ export default function Vehicles({ vehicles }) {
     }).format(priceInPounds);
   };
 
-  const selectVehicle = (vehicle) => {
+  const selectVehicle = (vehicle: Vehicle) => {
     setSelectedVehicle(vehicle);
   };
 
